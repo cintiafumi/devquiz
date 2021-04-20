@@ -1,4 +1,5 @@
 import 'package:devquiz/core/core.dart';
+import 'package:devquiz/home/widgets/score_card/score_card_widget.dart';
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends PreferredSize {
@@ -13,34 +14,40 @@ class AppBarWidget extends PreferredSize {
         padding: const EdgeInsets.symmetric(
           horizontal: 20
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Text.rich(
-              TextSpan(
-                text: "Olá, ",
-                style: AppTextStyles.title,
-                children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text.rich(
                   TextSpan(
-                    text: "Cintia",
-                    style: AppTextStyles.titleBold,
+                    text: "Olá, ",
+                    style: AppTextStyles.title,
+                    children: [
+                      TextSpan(
+                        text: "Cintia",
+                        style: AppTextStyles.titleBold,
+                      )
+                    ]
                   )
-                ]
-              )
-            ),
-            Container(
-              width: 58,
-              height: 58,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(
-                  image: NetworkImage(
-                    "https://github.com/cintiafumi.png"
-                  )
+                ),
+                Container(
+                  width: 58,
+                  height: 58,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        "https://github.com/cintiafumi.png"
+                      )
+                    )
+                  ),
                 )
-              ),
-            )
-          ]
+              ],
+            ),
+            ScoreCardWidget()
+          ],
         ),
       )
     )
