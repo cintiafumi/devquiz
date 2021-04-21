@@ -1,7 +1,7 @@
 import 'package:devquiz/core/core.dart';
 import 'package:flutter/material.dart';
 
-class SlashPage extends StatelessWidget {
+class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
