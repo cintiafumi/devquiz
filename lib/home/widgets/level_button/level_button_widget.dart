@@ -44,8 +44,10 @@ class LevelButtonWidget extends StatelessWidget {
             BorderSide(color: borderColor)),
         borderRadius: BorderRadius.circular(28),
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 6),
+      child: Container(
+        width: 80,
+        height: 32,
+        alignment: Alignment.center,
         child: Text(
           label,
           style: GoogleFonts.notoSans(
