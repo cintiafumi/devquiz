@@ -15,10 +15,21 @@ class _ChallengePageState extends State<ChallengePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60),
+        preferredSize: Size.fromHeight(86),
         child: SafeArea(
           top: true,
-          child: QuestionIndicatorWidget(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IconButton(
+                icon: Icon(Icons.close),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              QuestionIndicatorWidget(),
+            ],
+          ),
         ),
       ),
       body: QuizWidget(
@@ -30,12 +41,16 @@ class _ChallengePageState extends State<ChallengePage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Expanded(child: NextButtonWidget.secondary(
+              Expanded(
+                  child: NextButtonWidget.secondary(
                 label: "Pular",
                 onTap: () {},
               )),
-              SizedBox(width: 7,),
-              Expanded(child: NextButtonWidget.primary(
+              SizedBox(
+                width: 7,
+              ),
+              Expanded(
+                  child: NextButtonWidget.primary(
                 label: "Confirmar",
                 onTap: () {},
               )),
