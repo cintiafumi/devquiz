@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class AnswerWidget extends StatelessWidget {
   final AnswerModel answer;
   final bool isSelected;
-  final VoidCallback onTap;
+  final ValueChanged<bool> onTap;
   final bool disabled;
 
   const AnswerWidget({
@@ -40,14 +40,17 @@ class AnswerWidget extends StatelessWidget {
       child: IgnorePointer(
         ignoring: disabled,
         child: GestureDetector(
-          onTap: onTap,
+          onTap: () {
+            onTap(answer.isRight);
+          },
           child: Container(
             padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
                 color: isSelected ? _selectedColorCardRight : AppColors.white,
                 borderRadius: BorderRadius.circular(10),
                 border: Border.fromBorderSide(BorderSide(
-                  color: isSelected ? _selectedBorderCardRight : AppColors.border,
+                  color:
+                      isSelected ? _selectedBorderCardRight : AppColors.border,
                 ))),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -55,8 +58,9 @@ class AnswerWidget extends StatelessWidget {
                 Expanded(
                   child: Text(
                     answer.title,
-                    style:
-                        isSelected ? _selectedTextStyleRight : AppTextStyles.body,
+                    style: isSelected
+                        ? _selectedTextStyleRight
+                        : AppTextStyles.body,
                   ),
                 ),
                 Container(

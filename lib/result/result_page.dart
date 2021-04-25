@@ -3,6 +3,13 @@ import 'package:devquiz/core/core.dart';
 import 'package:flutter/material.dart';
 
 class ResultPage extends StatelessWidget {
+  final String title;
+  final int length;
+  final int result;
+
+  ResultPage({Key? key, required this.title, required this.length, required this.result})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,15 +31,15 @@ class ResultPage extends StatelessWidget {
                 ),
                 Text.rich(
                   TextSpan(
-                    text: "Você concluiu ",
+                    text: "Você concluiu",
                     style: AppTextStyles.body,
                     children: [
                       TextSpan(
-                        text: "\nGerenciamento de Estado ",
+                        text: "\n$title",
                         style: AppTextStyles.bodyBold,
                       ),
                       TextSpan(
-                        text: "\ncom 6 de 10 acertos.",
+                        text: "\ncom $result de $length acertos.",
                         style: AppTextStyles.body,
                       ),
                     ],
@@ -41,41 +48,39 @@ class ResultPage extends StatelessWidget {
                 ),
               ],
             ),
-            Column(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 68),
-                        child: NextButtonWidget.secondary(
-                          label: "Compartilhar",
-                          onTap: () {},
-                        ),
+            Column(children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 68),
+                      child: NextButtonWidget.secondary(
+                        label: "Compartilhar",
+                        onTap: () {},
                       ),
                     ),
-                  ],
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 68),
-                        child: NextButtonWidget.text(
-                          label: "Voltar ao início",
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                        ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 68),
+                      child: NextButtonWidget.text(
+                        label: "Voltar ao início",
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
                       ),
                     ),
-                  ],
-                ),
-              ]
-            ),
+                  ),
+                ],
+              ),
+            ]),
           ],
         ),
       ),
