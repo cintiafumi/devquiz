@@ -1,13 +1,18 @@
 import 'package:devquiz/challenge/widgets/next_button/next_button_widget.dart';
 import 'package:devquiz/core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ResultPage extends StatelessWidget {
   final String title;
   final int length;
   final int result;
 
-  ResultPage({Key? key, required this.title, required this.length, required this.result})
+  ResultPage(
+      {Key? key,
+      required this.title,
+      required this.length,
+      required this.result})
       : super(key: key);
 
   @override
@@ -56,7 +61,11 @@ class ResultPage extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 68),
                       child: NextButtonWidget.secondary(
                         label: "Compartilhar",
-                        onTap: () {},
+                        onTap: () {
+                          Share.share(
+                            "DevQuiz NLW#5 Flutter: Resultado do Quiz: $title\nObtive: ${result/length}% de aproveitamento"
+                          );
+                        },
                       ),
                     ),
                   ),
